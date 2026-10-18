@@ -50,7 +50,7 @@ CI benchmarks `apps/10000` on Ubuntu, macOS and Windows:
 
 - `rolldown`: the npm release in the root `package.json`.
 - `rolldown preview`: the build in `tools/rolldown-preview`, by default the pkg.pr.new build of [rolldown#11234](https://github.com/rolldown/rolldown/pull/11234).
-- `rolldown preview, warm cache` and `rolldown preview, cold cache`: the same build with the fs cache of rolldown#11234 turned on by `apps/10000/fs-cache.mjs`. The cache is unix only, so on Windows these rows equal the no-cache row.
+- `rolldown preview, warm cache` and `rolldown preview, cold cache`: the same build with the fs cache of rolldown#11234 turned on by `apps/10000/fs-cache.mjs`. Previews before `@8b887ec` have a unix-only cache, so on Windows these rows equal the no-cache row.
 - `bun`: the version from `oven-sh/setup-bun`.
 
 Each job writes its table to the run's summary page and uploads it as an artifact. After a run on `main`, CI writes the three tables into this README.
