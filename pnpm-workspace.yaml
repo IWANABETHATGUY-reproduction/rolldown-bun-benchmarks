@@ -13,7 +13,3 @@ minimumReleaseAgeExclude:
 
 # The rolldown preview from pkg.pr.new gets its bindings from URLs.
 blockExoticSubdeps: false
-
-allowBuilds:
-  '@swc/core': set this to true or false
-  esbuild: set this to true or false

@@ -181,7 +181,7 @@ if (jsonOutput) {
 function getToolVersions() {
   // Map tool names to their version commands
   const toolCommandMap = {
-    'rolldown': 'pnpm rolldown --version',
+    'rolldown': 'node node_modules/rolldown/bin/cli.mjs --version',
     'rolldown-preview': 'node tools/rolldown-preview/cli.mjs --version',
     'rolldown-preview-cache': 'node tools/rolldown-preview/cli.mjs --version',
     'rolldown-preview-cold': 'node tools/rolldown-preview/cli.mjs --version',
