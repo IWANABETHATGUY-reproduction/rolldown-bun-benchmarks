@@ -21,6 +21,9 @@ let section = `<!-- BENCHMARK_START -->
 
 Updated ${date} by [this workflow run](${process.env.RUN_URL}). \`rolldown preview\` is ${preview}.
 `;
+if (process.env.EXTRA_ENV) {
+  section += `\nAll rows ran with \`${process.env.EXTRA_ENV}\`. Stock rolldown and bun ignore these variables.\n`;
+}
 for (const [name, os] of platforms) {
   const output = readFileSync(`./results/benchmark-${os}/benchmark-output.txt`, 'utf-8');
   section += `\n### ${name}\n\n${extractTable(output)}\n`;

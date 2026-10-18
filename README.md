@@ -62,6 +62,8 @@ gh workflow run ci.yml -R IWANABETHATGUY-reproduction/rolldown-bun-benchmarks \
   -f rolldown_preview=https://pkg.pr.new/rolldown/rolldown@<sha>
 ```
 
+Add `-f extra_env="NAME=value ..."` to set env vars for all benchmark steps. For example, `SKIP_EXPORTS_KEY_CHECK=1` turns on the resolver experiment in the `@5759e7b` preview of rolldown#11234.
+
 A rolldown PR gets a pkg.pr.new build when it has the `trigger: preview` label. `pnpm-workspace.yaml` sets `blockExoticSubdeps: false`, because the preview's bindings are URL dependencies.
 
 ## Run locally
