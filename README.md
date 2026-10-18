@@ -2,6 +2,13 @@
 
 A trimmed copy of [rolldown/benchmarks](https://github.com/rolldown/benchmarks) that keeps only rolldown and bun. One CI run takes minutes instead of hours, so it gives quick feedback on rolldown performance work.
 
+## Results
+
+Ubuntu gives the stable signal. GitHub's macOS runners are noisy, so compare rows inside one table and not numbers across runs.
+
+<!-- BENCHMARK_START -->
+<!-- BENCHMARK_END -->
+
 ## Rows
 
 CI benchmarks `apps/10000` on Ubuntu, macOS and Windows:
@@ -11,7 +18,7 @@ CI benchmarks `apps/10000` on Ubuntu, macOS and Windows:
 - `rolldown preview, warm cache` and `rolldown preview, cold cache`: the same build with the fs cache of rolldown#11234 turned on by `apps/10000/fs-cache.mjs`. The cache is unix only, so on Windows these rows equal the no-cache row.
 - `bun`: the version from `oven-sh/setup-bun`.
 
-Each job writes its table to the run's summary page and uploads it as an artifact.
+Each job writes its table to the run's summary page and uploads it as an artifact. After a run on `main`, CI writes the three tables into this README.
 
 ## Test another rolldown build
 
