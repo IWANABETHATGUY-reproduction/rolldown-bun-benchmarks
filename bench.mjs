@@ -74,23 +74,22 @@ function escapeShellArg(arg) {
 }
 
 // Run benchmark for all tools
-const tools = ['vite', 'rsbuild', 'rspack', 'rollup', 'rolldown', 'rolldown-preview', 'rolldown-preview-cache', 'rolldown-preview-cold', 'esbuild', 'bun'];
+// Only the rows that have a `build:<tool>` script in the app.
+const appScripts = JSON.parse(readFileSync(join(app, 'package.json'), 'utf-8')).scripts ?? {};
+const tools = ['rolldown', 'rolldown-preview', 'rolldown-preview-cache', 'rolldown-preview-cold', 'bun'].filter(
+  (tool) => `build:${tool}` in appScripts,
+);
 const toolDisplayNames = {
-  'vite': 'vite',
-  'rsbuild': 'rsbuild',
-  'rspack': 'rspack',
-  'rollup': 'rollup',
   'rolldown': 'rolldown',
-  'rolldown-preview': 'rolldown PR',
-  'rolldown-preview-cache': 'rolldown PR, warm cache',
-  'rolldown-preview-cold': 'rolldown PR, cold cache',
-  'esbuild': 'esbuild',
+  'rolldown-preview': 'rolldown preview',
+  'rolldown-preview-cache': 'rolldown preview, warm cache',
+  'rolldown-preview-cold': 'rolldown preview, cold cache',
   'bun': 'bun'
 };
 const tempJsonFile = '.bench-temp.json';
 
 // Build hyperfine command with proper quoting
-let cmd = `${hyperfineBin} --export-json ${escapeShellArg(tempJsonFile)}`;
+let cmd = `${hyperfineBin} --warmup 1 --export-json ${escapeShellArg(tempJsonFile)}`;
 for (const tool of tools) {
   const displayName = toolDisplayNames[tool] || tool;
   cmd += ` -n ${escapeShellArg(displayName)} ${escapeShellArg(`node --run build:${tool}`)}`;
@@ -141,6 +140,8 @@ const results = benchmarkJson.results.map((result) => {
     version: version,
     mean: result.mean,
     stddev: result.stddev,
+    user: result.user,
+    system: result.system,
     jsSize: sizeData?.jsSize || 0,
     cssSize: sizeData?.cssSize || 0,
     mapSize: sizeData?.mapSize || 0,
@@ -167,6 +168,8 @@ if (jsonOutput) {
       version: r.version,
       time_ms: (r.mean * 1000).toFixed(2),
       stddev_ms: (r.stddev * 1000).toFixed(2),
+      user_ms: (r.user * 1000).toFixed(0),
+      system_ms: (r.system * 1000).toFixed(0),
       js_size: formatSize(r.jsSize),
       css_size: formatSize(r.cssSize),
       sourcemaps_size: formatSize(r.mapSize),
@@ -178,15 +181,10 @@ if (jsonOutput) {
 function getToolVersions() {
   // Map tool names to their version commands
   const toolCommandMap = {
-    'vite': 'pnpm vite --version',
-    'rsbuild': 'pnpm rsbuild --version',
-    'rspack': 'pnpm rspack --version',
-    'rollup': 'pnpm rollup --version',
     'rolldown': 'pnpm rolldown --version',
     'rolldown-preview': 'node tools/rolldown-preview/cli.mjs --version',
     'rolldown-preview-cache': 'node tools/rolldown-preview/cli.mjs --version',
     'rolldown-preview-cold': 'node tools/rolldown-preview/cli.mjs --version',
-    'esbuild': 'pnpm esbuild --version',
     'bun': 'bun --version',
   };
 
@@ -288,6 +286,8 @@ function displayResults(results) {
       version: result.version,
       time: `${meanPadded} ± ${stddevPadded} ms`,
       comparison: comparison,
+      user: `${(result.user * 1000).toFixed(0)} ms`,
+      system: `${(result.system * 1000).toFixed(0)} ms`,
       js: result.jsSize > 0 ? formatSize(result.jsSize) : 'not found',
       css: result.cssSize > 0 ? formatSize(result.cssSize) : 'not found',
       maps: result.mapSize > 0 ? formatSize(result.mapSize) : 'not found',
@@ -299,6 +299,8 @@ function displayResults(results) {
     version: Math.max(7, ...data.map(d => d.version.length)),
     time: 25,
     comparison: Math.max(10, ...data.map(d => d.comparison.length)),
+    user: Math.max(8, ...data.map(d => d.user.length)),
+    system: Math.max(10, ...data.map(d => d.system.length)),
     js: Math.max(2, ...data.map(d => d.js.length)),
     css: Math.max(3, ...data.map(d => d.css.length)),
     maps: Math.max(10, ...data.map(d => d.maps.length)),
@@ -310,6 +312,8 @@ function displayResults(results) {
     ' | ' + 'Version'.padEnd(colWidths.version) +
     ' | ' + 'Time (mean ± σ)'.padEnd(colWidths.time) +
     ' | ' + 'Comparison'.padEnd(colWidths.comparison) +
+    ' | ' + 'User CPU'.padEnd(colWidths.user) +
+    ' | ' + 'System CPU'.padEnd(colWidths.system) +
     ' | ' + 'JS'.padEnd(colWidths.js) +
     ' | ' + 'CSS'.padEnd(colWidths.css) +
     ' | ' + 'Sourcemaps'.padEnd(colWidths.maps) +
@@ -321,6 +325,8 @@ function displayResults(results) {
     ' | ' + '-'.repeat(colWidths.version) +
     ' | ' + '-'.repeat(colWidths.time - 1) + ':' +
     ' | ' + '-'.repeat(colWidths.comparison) +
+    ' | ' + '-'.repeat(colWidths.user - 1) + ':' +
+    ' | ' + '-'.repeat(colWidths.system - 1) + ':' +
     ' | ' + '-'.repeat(colWidths.js) +
     ' | ' + '-'.repeat(colWidths.css) +
     ' | ' + '-'.repeat(colWidths.maps) +
@@ -334,6 +340,8 @@ function displayResults(results) {
       ' | ' + row.version.padEnd(colWidths.version) +
       ' | ' + row.time.padStart(colWidths.time) +
       ' | ' + row.comparison.padEnd(colWidths.comparison) +
+      ' | ' + row.user.padStart(colWidths.user) +
+      ' | ' + row.system.padStart(colWidths.system) +
       ' | ' + row.js.padEnd(colWidths.js) +
       ' | ' + row.css.padEnd(colWidths.css) +
       ' | ' + row.maps.padEnd(colWidths.maps) +
