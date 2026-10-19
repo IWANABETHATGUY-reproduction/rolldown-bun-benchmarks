@@ -8,37 +8,37 @@ Ubuntu gives the stable signal. GitHub's macOS runners are noisy, so compare row
 
 <!-- BENCHMARK_START -->
 
-Updated 2026-10-19 by [this workflow run](https://github.com/IWANABETHATGUY-reproduction/rolldown-bun-benchmarks/actions/runs/39267497729). `rolldown preview` is `https://pkg.pr.new/rolldown/rolldown@17f48fe`.
+Updated 2026-10-19 by [this workflow run](https://github.com/IWANABETHATGUY-reproduction/rolldown-bun-benchmarks/actions/runs/39269605212). `rolldown preview` is `https://pkg.pr.new/rolldown/rolldown@8a58adf`.
 
 ### Ubuntu
 
 | Tool                         | Version               | Time (mean ± σ)           | Comparison | User CPU | System CPU | JS      | CSS       | Sourcemaps |
 | ---------------------------- | --------------------- | ------------------------: | ---------- | -------: | ---------: | ------- | --------- | ---------- |
-| bun                          | 1.4.3                 |       1105.26 ±  35.86 ms | 1.0x       |  1669 ms |     646 ms | 4.95 MB | not found | 12.39 MB   |
-| rolldown preview, warm cache | 1.2.14+commit.85a0ecd |       1864.73 ±  21.51 ms | 1.7x       |  4075 ms |     229 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview             | 1.2.14+commit.85a0ecd |       1974.99 ±  18.33 ms | 1.8x       |  4383 ms |     510 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown                     | 1.2.14                |       1993.44 ±  69.54 ms | 1.8x       |  4404 ms |     525 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview, cold cache | 1.2.14+commit.85a0ecd |       2008.12 ±  26.16 ms | 1.8x       |  4510 ms |     514 ms | 5.00 MB | not found | 13.59 MB   |
+| bun                          | 1.4.3                 |       1102.15 ±  51.16 ms | 1.0x       |  1684 ms |     658 ms | 4.95 MB | not found | 12.39 MB   |
+| rolldown preview, warm cache | 1.2.14+commit.fd587b2 |       1821.77 ±  31.15 ms | 1.7x       |  4002 ms |     224 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview             | 1.2.14+commit.fd587b2 |       1936.39 ±  24.43 ms | 1.8x       |  4354 ms |     504 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown                     | 1.2.14                |       1948.62 ±  19.66 ms | 1.8x       |  4373 ms |     501 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview, cold cache | 1.2.14+commit.fd587b2 |       1952.39 ±  10.52 ms | 1.8x       |  4421 ms |     509 ms | 5.00 MB | not found | 13.59 MB   |
 
 ### macOS
 
 | Tool                         | Version               | Time (mean ± σ)           | Comparison | User CPU | System CPU | JS      | CSS       | Sourcemaps |
 | ---------------------------- | --------------------- | ------------------------: | ---------- | -------: | ---------: | ------- | --------- | ---------- |
-| bun                          | 1.4.3                 |        837.85 ±  78.05 ms | 1.0x       |   997 ms |     748 ms | 4.95 MB | not found | 12.39 MB   |
-| rolldown preview, warm cache | 1.2.14+commit.85a0ecd |       1715.18 ± 137.62 ms | 2.0x       |  2856 ms |     369 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview             | 1.2.14+commit.85a0ecd |       1805.50 ± 202.84 ms | 2.2x       |  2886 ms |    1022 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown                     | 1.2.14                |       1970.66 ± 170.39 ms | 2.4x       |  3031 ms |    1133 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview, cold cache | 1.2.14+commit.85a0ecd |       2108.15 ± 194.61 ms | 2.5x       |  3049 ms |    1072 ms | 5.00 MB | not found | 13.59 MB   |
+| bun                          | 1.4.3                 |        730.73 ±  91.61 ms | 1.0x       |   894 ms |     640 ms | 4.95 MB | not found | 12.39 MB   |
+| rolldown preview, warm cache | 1.2.14+commit.fd587b2 |       1905.55 ± 174.35 ms | 2.6x       |  2959 ms |     434 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview             | 1.2.14+commit.fd587b2 |       2249.94 ± 231.55 ms | 3.1x       |  3329 ms |    1333 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview, cold cache | 1.2.14+commit.fd587b2 |       2496.46 ± 577.36 ms | 3.4x       |  3422 ms |    1363 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown                     | 1.2.14                |       2544.13 ± 557.22 ms | 3.5x       |  3759 ms |    1619 ms | 5.00 MB | not found | 13.59 MB   |
 
 ### Windows
 
 | Tool                         | Version               | Time (mean ± σ)           | Comparison | User CPU | System CPU | JS      | CSS       | Sourcemaps |
 | ---------------------------- | --------------------- | ------------------------: | ---------- | -------: | ---------: | ------- | --------- | ---------- |
-| bun                          | 1.4.3                 |       1731.20 ±  71.27 ms | 1.0x       |  1854 ms |    1937 ms | 4.95 MB | not found | 12.81 MB   |
-| rolldown preview, warm cache | 1.2.14+commit.85a0ecd |       2183.30 ±  35.46 ms | 1.3x       |  4035 ms |    1072 ms | 5.00 MB | not found | 14.01 MB   |
-| rolldown                     | 1.2.14                |       2649.97 ±  90.71 ms | 1.5x       |  4470 ms |    2244 ms | 5.00 MB | not found | 14.01 MB   |
-| rolldown preview             | 1.2.14+commit.85a0ecd |       2669.08 ±  43.76 ms | 1.5x       |  4629 ms |    2194 ms | 5.00 MB | not found | 14.01 MB   |
-| rolldown preview, cold cache | 1.2.14+commit.85a0ecd |       2696.74 ±  22.91 ms | 1.6x       |  4785 ms |    2248 ms | 5.00 MB | not found | 14.01 MB   |
+| bun                          | 1.4.3                 |       1722.52 ±  89.20 ms | 1.0x       |  1805 ms |    1920 ms | 4.95 MB | not found | 12.81 MB   |
+| rolldown preview, warm cache | 1.2.14+commit.fd587b2 |       2180.06 ±  13.60 ms | 1.3x       |  4150 ms |    1003 ms | 5.00 MB | not found | 14.01 MB   |
+| rolldown                     | 1.2.14                |       2623.97 ±  26.87 ms | 1.5x       |  4575 ms |    2200 ms | 5.00 MB | not found | 14.01 MB   |
+| rolldown preview             | 1.2.14+commit.fd587b2 |       2637.99 ±  22.06 ms | 1.5x       |  4574 ms |    2150 ms | 5.00 MB | not found | 14.01 MB   |
+| rolldown preview, cold cache | 1.2.14+commit.fd587b2 |       2699.00 ±  29.60 ms | 1.6x       |  4769 ms |    2189 ms | 5.00 MB | not found | 14.01 MB   |
 
 <!-- BENCHMARK_END -->
 
