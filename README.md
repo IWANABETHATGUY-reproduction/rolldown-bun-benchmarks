@@ -8,37 +8,37 @@ Ubuntu gives the stable signal. GitHub's macOS runners are noisy, so compare row
 
 <!-- BENCHMARK_START -->
 
-Updated 2026-10-19 by [this workflow run](https://github.com/IWANABETHATGUY-reproduction/rolldown-bun-benchmarks/actions/runs/39261271493). `rolldown preview` is `https://pkg.pr.new/rolldown/rolldown@726b3fb`.
+Updated 2026-10-19 by [this workflow run](https://github.com/IWANABETHATGUY-reproduction/rolldown-bun-benchmarks/actions/runs/39263219735). `rolldown preview` is `https://pkg.pr.new/rolldown/rolldown@6b11bc0`.
 
 ### Ubuntu
 
 | Tool                         | Version               | Time (mean ± σ)           | Comparison | User CPU | System CPU | JS      | CSS       | Sourcemaps |
 | ---------------------------- | --------------------- | ------------------------: | ---------- | -------: | ---------: | ------- | --------- | ---------- |
-| bun                          | 1.4.3                 |       1075.45 ±  12.44 ms | 1.0x       |  1681 ms |     664 ms | 4.95 MB | not found | 12.39 MB   |
-| rolldown preview, warm cache | 1.2.14+commit.65e17e5 |       1783.19 ±   8.19 ms | 1.7x       |  3936 ms |     221 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview             | 1.2.14+commit.65e17e5 |       1920.31 ±  23.13 ms | 1.8x       |  4323 ms |     505 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown                     | 1.2.14                |       1931.64 ±  11.07 ms | 1.8x       |  4345 ms |     505 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview, cold cache | 1.2.14+commit.65e17e5 |       1939.59 ±  20.22 ms | 1.8x       |  4413 ms |     502 ms | 5.00 MB | not found | 13.59 MB   |
+| bun                          | 1.4.3                 |       1077.92 ±  31.80 ms | 1.0x       |  1627 ms |     648 ms | 4.95 MB | not found | 12.39 MB   |
+| rolldown preview, warm cache | 1.2.14+commit.9d21914 |       1772.98 ±   7.43 ms | 1.6x       |  3922 ms |     226 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview             | 1.2.14+commit.9d21914 |       1915.60 ±  15.00 ms | 1.8x       |  4275 ms |     523 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview, cold cache | 1.2.14+commit.9d21914 |       1928.11 ±  14.34 ms | 1.8x       |  4383 ms |     517 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown                     | 1.2.14                |       1944.53 ±  22.69 ms | 1.8x       |  4345 ms |     509 ms | 5.00 MB | not found | 13.59 MB   |
 
 ### macOS
 
 | Tool                         | Version               | Time (mean ± σ)           | Comparison | User CPU | System CPU | JS      | CSS       | Sourcemaps |
 | ---------------------------- | --------------------- | ------------------------: | ---------- | -------: | ---------: | ------- | --------- | ---------- |
-| bun                          | 1.4.3                 |        928.68 ±  93.45 ms | 1.0x       |  1086 ms |     824 ms | 4.95 MB | not found | 12.39 MB   |
-| rolldown preview, warm cache | 1.2.14+commit.65e17e5 |       1819.25 ± 358.17 ms | 2.0x       |  3002 ms |     389 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown                     | 1.2.14                |       2210.50 ± 271.80 ms | 2.4x       |  3426 ms |    1354 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview             | 1.2.14+commit.65e17e5 |       2430.38 ± 530.07 ms | 2.6x       |  3578 ms |    1437 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview, cold cache | 1.2.14+commit.65e17e5 |       2560.51 ± 395.60 ms | 2.8x       |  3622 ms |    1199 ms | 5.00 MB | not found | 13.59 MB   |
+| bun                          | 1.4.3                 |        642.67 ±  36.69 ms | 1.0x       |   832 ms |    1009 ms | 4.95 MB | not found | 12.39 MB   |
+| rolldown preview, warm cache | 1.2.14+commit.9d21914 |        909.03 ±  47.88 ms | 1.4x       |  1993 ms |     277 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview, cold cache | 1.2.14+commit.9d21914 |        980.73 ±  59.37 ms | 1.5x       |  2014 ms |     753 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview             | 1.2.14+commit.9d21914 |       1011.39 ±  61.93 ms | 1.6x       |  2008 ms |     754 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown                     | 1.2.14                |       1038.24 ±  38.26 ms | 1.6x       |  1996 ms |     782 ms | 5.00 MB | not found | 13.59 MB   |
 
 ### Windows
 
 | Tool                         | Version               | Time (mean ± σ)           | Comparison | User CPU | System CPU | JS      | CSS       | Sourcemaps |
 | ---------------------------- | --------------------- | ------------------------: | ---------- | -------: | ---------: | ------- | --------- | ---------- |
-| bun                          | 1.4.3                 |       2118.55 ±  79.87 ms | 1.0x       |  2249 ms |    2194 ms | 4.95 MB | not found | 12.81 MB   |
-| rolldown preview, warm cache | 1.2.14+commit.65e17e5 |       2551.18 ±  25.99 ms | 1.2x       |  4890 ms |    1294 ms | 5.00 MB | not found | 14.01 MB   |
-| rolldown                     | 1.2.14                |       3019.75 ±  26.83 ms | 1.4x       |  5307 ms |    2506 ms | 5.00 MB | not found | 14.01 MB   |
-| rolldown preview             | 1.2.14+commit.65e17e5 |       3070.60 ±  38.25 ms | 1.4x       |  5515 ms |    2398 ms | 5.00 MB | not found | 14.01 MB   |
-| rolldown preview, cold cache | 1.2.14+commit.65e17e5 |       3139.67 ±  21.77 ms | 1.5x       |  5613 ms |    2630 ms | 5.00 MB | not found | 14.01 MB   |
+| bun                          | 1.4.3                 |       2181.41 ±  87.74 ms | 1.0x       |  2420 ms |    2238 ms | 4.95 MB | not found | 12.81 MB   |
+| rolldown preview, warm cache | 1.2.14+commit.9d21914 |       2560.48 ±  36.44 ms | 1.2x       |  4895 ms |    1280 ms | 5.00 MB | not found | 14.01 MB   |
+| rolldown                     | 1.2.14                |       3044.44 ±  32.43 ms | 1.4x       |  5431 ms |    2426 ms | 5.00 MB | not found | 14.01 MB   |
+| rolldown preview             | 1.2.14+commit.9d21914 |       3092.53 ±  33.80 ms | 1.4x       |  5473 ms |    2510 ms | 5.00 MB | not found | 14.01 MB   |
+| rolldown preview, cold cache | 1.2.14+commit.9d21914 |       3144.91 ±  46.21 ms | 1.4x       |  5729 ms |    2629 ms | 5.00 MB | not found | 14.01 MB   |
 
 <!-- BENCHMARK_END -->
 
