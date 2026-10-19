@@ -8,48 +8,48 @@ Ubuntu gives the stable signal. GitHub's macOS runners are noisy, so compare row
 
 <!-- BENCHMARK_START -->
 
-Updated 2026-10-19 by [this workflow run](https://github.com/IWANABETHATGUY-reproduction/rolldown-bun-benchmarks/actions/runs/39269807647). `rolldown preview` is `https://pkg.pr.new/rolldown/rolldown@17f48fe`.
+Updated 2026-10-19 by [this workflow run](https://github.com/IWANABETHATGUY-reproduction/rolldown-bun-benchmarks/actions/runs/39271864656). `rolldown preview` is `https://pkg.pr.new/rolldown/rolldown@8a58adf`.
 
-`rolldown preview B` is `https://pkg.pr.new/rolldown/rolldown@8a58adf`.
+`rolldown preview B` is `https://pkg.pr.new/rolldown/rolldown@17f48fe`.
 
 ### Ubuntu
 
 | Tool                           | Version               | Time (mean ± σ)           | Comparison | User CPU | System CPU | JS      | CSS       | Sourcemaps |
 | ------------------------------ | --------------------- | ------------------------: | ---------- | -------: | ---------: | ------- | --------- | ---------- |
-| bun                            | 1.4.3                 |       1044.92 ±   8.64 ms | 1.0x       |  1639 ms |     618 ms | 4.95 MB | not found | 12.39 MB   |
-| rolldown preview, warm cache   | 1.2.14+commit.85a0ecd |       1790.51 ±  18.09 ms | 1.7x       |  3940 ms |     214 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview B, warm cache | 1.2.14+commit.fd587b2 |       1796.19 ±  14.96 ms | 1.7x       |  3944 ms |     220 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown                       | 1.2.14                |       1913.84 ±   9.01 ms | 1.8x       |  4270 ms |     497 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview               | 1.2.14+commit.85a0ecd |       1919.15 ±  25.14 ms | 1.8x       |  4291 ms |     490 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview B             | 1.2.14+commit.fd587b2 |       1923.62 ±  19.43 ms | 1.8x       |  4321 ms |     497 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview, cold cache   | 1.2.14+commit.85a0ecd |       1934.03 ±  14.19 ms | 1.9x       |  4380 ms |     496 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview B, cold cache | 1.2.14+commit.fd587b2 |       1943.85 ±  22.48 ms | 1.9x       |  4402 ms |     485 ms | 5.00 MB | not found | 13.59 MB   |
+| bun                            | 1.4.3                 |       1050.57 ±  26.02 ms | 1.0x       |  1436 ms |     719 ms | 4.95 MB | not found | 12.39 MB   |
+| rolldown preview B, warm cache | 1.2.14+commit.85a0ecd |       1806.45 ±  11.48 ms | 1.7x       |  3944 ms |     205 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview, warm cache   | 1.2.14+commit.fd587b2 |       1829.73 ±  16.90 ms | 1.7x       |  3976 ms |     201 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview B             | 1.2.14+commit.85a0ecd |       1945.75 ±  22.97 ms | 1.9x       |  4221 ms |     590 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview               | 1.2.14+commit.fd587b2 |       1955.15 ±  19.30 ms | 1.9x       |  4231 ms |     572 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown                       | 1.2.14                |       1975.14 ±  31.72 ms | 1.9x       |  4265 ms |     583 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview, cold cache   | 1.2.14+commit.fd587b2 |       1976.49 ±  27.86 ms | 1.9x       |  4346 ms |     581 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview B, cold cache | 1.2.14+commit.85a0ecd |       1984.10 ±  28.75 ms | 1.9x       |  4334 ms |     581 ms | 5.00 MB | not found | 13.59 MB   |
 
 ### macOS
 
 | Tool                           | Version               | Time (mean ± σ)           | Comparison | User CPU | System CPU | JS      | CSS       | Sourcemaps |
 | ------------------------------ | --------------------- | ------------------------: | ---------- | -------: | ---------: | ------- | --------- | ---------- |
-| bun                            | 1.4.3                 |       1351.64 ± 129.97 ms | 1.0x       |  1426 ms |    1285 ms | 4.95 MB | not found | 12.39 MB   |
-| rolldown preview, warm cache   | 1.2.14+commit.85a0ecd |       2194.63 ± 330.05 ms | 1.6x       |  3369 ms |     454 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview B, warm cache | 1.2.14+commit.fd587b2 |       2338.91 ± 343.37 ms | 1.7x       |  3423 ms |     451 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview, cold cache   | 1.2.14+commit.85a0ecd |       2474.00 ± 196.23 ms | 1.8x       |  3648 ms |    1275 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown                       | 1.2.14                |       2499.21 ± 328.65 ms | 1.8x       |  3707 ms |    1464 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview B             | 1.2.14+commit.fd587b2 |       2526.87 ± 283.52 ms | 1.9x       |  3557 ms |    1312 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview               | 1.2.14+commit.85a0ecd |       2585.65 ± 250.17 ms | 1.9x       |  3642 ms |    1425 ms | 5.00 MB | not found | 13.59 MB   |
-| rolldown preview B, cold cache | 1.2.14+commit.fd587b2 |       3622.03 ± 899.59 ms | 2.7x       |  4249 ms |    1759 ms | 5.00 MB | not found | 13.59 MB   |
+| bun                            | 1.4.3                 |        653.03 ±  29.35 ms | 1.0x       |   786 ms |     539 ms | 4.95 MB | not found | 12.39 MB   |
+| rolldown preview, warm cache   | 1.2.14+commit.fd587b2 |       1020.21 ±  87.10 ms | 1.6x       |  1833 ms |     223 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview B, warm cache | 1.2.14+commit.85a0ecd |       1033.12 ±  77.38 ms | 1.6x       |  1811 ms |     226 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview, cold cache   | 1.2.14+commit.fd587b2 |       1199.10 ±  69.38 ms | 1.8x       |  1954 ms |     604 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview B             | 1.2.14+commit.85a0ecd |       1210.51 ± 152.65 ms | 1.9x       |  1884 ms |     614 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview B, cold cache | 1.2.14+commit.85a0ecd |       1245.23 ± 113.41 ms | 1.9x       |  1926 ms |     591 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown preview               | 1.2.14+commit.fd587b2 |       1278.37 ± 110.63 ms | 2.0x       |  2003 ms |     666 ms | 5.00 MB | not found | 13.59 MB   |
+| rolldown                       | 1.2.14                |       1328.31 ± 180.33 ms | 2.0x       |  1971 ms |     688 ms | 5.00 MB | not found | 13.59 MB   |
 
 ### Windows
 
 | Tool                           | Version               | Time (mean ± σ)           | Comparison | User CPU | System CPU | JS      | CSS       | Sourcemaps |
 | ------------------------------ | --------------------- | ------------------------: | ---------- | -------: | ---------: | ------- | --------- | ---------- |
-| bun                            | 1.4.3                 |       1726.12 ±  23.47 ms | 1.0x       |  1942 ms |    1863 ms | 4.95 MB | not found | 12.81 MB   |
-| rolldown preview B, warm cache | 1.2.14+commit.fd587b2 |       2192.96 ±  17.72 ms | 1.3x       |  4307 ms |    1067 ms | 5.00 MB | not found | 14.01 MB   |
-| rolldown preview, warm cache   | 1.2.14+commit.85a0ecd |       2224.11 ±  15.62 ms | 1.3x       |  4326 ms |    1090 ms | 5.00 MB | not found | 14.01 MB   |
-| rolldown                       | 1.2.14                |       2726.98 ±  18.72 ms | 1.6x       |  4995 ms |    2128 ms | 5.00 MB | not found | 14.01 MB   |
-| rolldown preview B             | 1.2.14+commit.fd587b2 |       2734.87 ±  20.00 ms | 1.6x       |  4965 ms |    2170 ms | 5.00 MB | not found | 14.01 MB   |
-| rolldown preview               | 1.2.14+commit.85a0ecd |       2768.31 ±  26.26 ms | 1.6x       |  4937 ms |    2245 ms | 5.00 MB | not found | 14.01 MB   |
-| rolldown preview B, cold cache | 1.2.14+commit.fd587b2 |       2780.18 ±  25.04 ms | 1.6x       |  5038 ms |    2315 ms | 5.00 MB | not found | 14.01 MB   |
-| rolldown preview, cold cache   | 1.2.14+commit.85a0ecd |       2783.18 ±  24.37 ms | 1.6x       |  5073 ms |    2279 ms | 5.00 MB | not found | 14.01 MB   |
+| bun                            | 1.4.3                 |       2144.19 ± 114.85 ms | 1.0x       |  2266 ms |    2365 ms | 4.95 MB | not found | 12.81 MB   |
+| rolldown preview B, warm cache | 1.2.14+commit.85a0ecd |       2591.96 ±  13.64 ms | 1.2x       |  4991 ms |    1281 ms | 5.00 MB | not found | 14.01 MB   |
+| rolldown preview, warm cache   | 1.2.14+commit.fd587b2 |       2816.22 ± 298.94 ms | 1.3x       |  5138 ms |    1368 ms | 5.00 MB | not found | 14.01 MB   |
+| rolldown                       | 1.2.14                |       2963.61 ±  30.42 ms | 1.4x       |  5275 ms |    2482 ms | 5.00 MB | not found | 14.01 MB   |
+| rolldown preview B             | 1.2.14+commit.85a0ecd |       3112.43 ±  24.75 ms | 1.5x       |  5552 ms |    2476 ms | 5.00 MB | not found | 14.01 MB   |
+| rolldown preview, cold cache   | 1.2.14+commit.fd587b2 |       3139.22 ±  33.31 ms | 1.5x       |  5564 ms |    2729 ms | 5.00 MB | not found | 14.01 MB   |
+| rolldown preview               | 1.2.14+commit.fd587b2 |       3160.45 ± 218.52 ms | 1.5x       |  5452 ms |    2528 ms | 5.00 MB | not found | 14.01 MB   |
+| rolldown preview B, cold cache | 1.2.14+commit.85a0ecd |       3217.28 ± 105.15 ms | 1.5x       |  5719 ms |    2657 ms | 5.00 MB | not found | 14.01 MB   |
 
 <!-- BENCHMARK_END -->
 
