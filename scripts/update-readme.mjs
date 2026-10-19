@@ -21,6 +21,9 @@ let section = `<!-- BENCHMARK_START -->
 
 Updated ${date} by [this workflow run](${process.env.RUN_URL}). \`rolldown preview\` is ${preview}.
 `;
+if (process.env.SPEC_B) {
+  section += `\n\`rolldown preview B\` is \`${process.env.SPEC_B}\`.\n`;
+}
 if (process.env.EXTRA_ENV) {
   section += `\nAll rows ran with \`${process.env.EXTRA_ENV}\`. Stock rolldown and bun ignore these variables.\n`;
 }

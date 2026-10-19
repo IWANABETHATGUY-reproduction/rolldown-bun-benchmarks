@@ -7,6 +7,10 @@ on:
         description: 'Package spec for the "rolldown preview" rows, for example https://pkg.pr.new/rolldown/rolldown@<sha>. Empty keeps the lockfile version.'
         required: false
         default: ''
+      rolldown_preview_b:
+        description: 'Package spec for extra "rolldown preview B" rows, to compare two builds in one run. Empty skips these rows.'
+        required: false
+        default: ''
       extra_env:
         description: 'Space-separated NAME=value pairs that all benchmark steps get, for example SKIP_EXPORTS_KEY_CHECK=1.'
         required: false
@@ -77,6 +81,14 @@ jobs:
           SPEC: ${{ inputs.rolldown_preview }}
         run: pnpm --filter rolldown-preview add "$SPEC" --ignore-scripts
 
+      - name: Use a second rolldown preview
+        if: inputs.rolldown_preview_b != ''
+        env:
+          SPEC_B: ${{ inputs.rolldown_preview_b }}
+        run: |
+          pnpm --filter rolldown-preview-b add "$SPEC_B" --ignore-scripts
+          echo "BENCH_PREVIEW_B=1" >> "$GITHUB_ENV"
+
       - name: Test Rolldown build
         working-directory: apps/10000
         run: |
@@ -94,6 +106,17 @@ jobs:
           cmp dist-rolldown-preview/main.js dist-rolldown-preview-cache/main.js
           cmp dist-rolldown-preview/main.js dist-rolldown-preview-cold/main.js
 
+      - name: Test Rolldown preview B build
+        if: inputs.rolldown_preview_b != ''
+        working-directory: apps/10000
+        run: |
+          node --run build:rolldown-preview-b
+          node --run build:rolldown-preview-b-cold
+          ROLLDOWN_FS_TIMES=1 node --run build:rolldown-preview-b-cache
+          ROLLDOWN_FS_TIMES=1 node --run build:rolldown-preview-b-cache
+          cmp dist-rolldown-preview-b/main.js dist-rolldown-preview-b-cache/main.js
+          cmp dist-rolldown-preview-b/main.js dist-rolldown-preview-b-cold/main.js
+
       - name: Test Bun build
         working-directory: apps/10000
         run: |
@@ -106,12 +129,14 @@ jobs:
       - name: Write summary
         env:
           SPEC: ${{ inputs.rolldown_preview }}
+          SPEC_B: ${{ inputs.rolldown_preview_b }}
           EXTRA_ENV: ${{ inputs.extra_env }}
         run: |
           {
             echo "### ${{ matrix.os }}"
             echo
             if [ -n "$SPEC" ]; then echo "rolldown preview: \`$SPEC\`"; echo; fi
+            if [ -n "$SPEC_B" ]; then echo "rolldown preview B: \`$SPEC_B\`"; echo; fi
             if [ -n "$EXTRA_ENV" ]; then echo "extra env: \`$EXTRA_ENV\`"; echo; fi
             sed -n '/^| Tool/,$p' benchmark-output.txt
           } >> "$GITHUB_STEP_SUMMARY"
@@ -142,6 +167,7 @@ jobs:
       - name: Update README
         env:
           SPEC: ${{ inputs.rolldown_preview }}
+          SPEC_B: ${{ inputs.rolldown_preview_b }}
           EXTRA_ENV: ${{ inputs.extra_env }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: node scripts/update-readme.mjs

@@ -8,13 +8,17 @@
     "build:rolldown-preview": "rolldown-preview build --config rolldown-preview.config.mjs",
     "build:rolldown-preview-cache": "rolldown-preview build --config rolldown-preview-cache.config.mjs",
     "build:rolldown-preview-cold": "rolldown-preview build --config rolldown-preview-cold.config.mjs",
+    "build:rolldown-preview-b": "rolldown-preview-b build --config rolldown-preview-b.config.mjs",
+    "build:rolldown-preview-b-cache": "rolldown-preview-b build --config rolldown-preview-b-cache.config.mjs",
+    "build:rolldown-preview-b-cold": "rolldown-preview-b build --config rolldown-preview-b-cold.config.mjs",
     "build:bun": "bun build --outdir=dist-bun --production --sourcemap ./src/index.jsx "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "rolldown-preview": "workspace:*"
+    "rolldown-preview": "workspace:*",
+    "rolldown-preview-b": "workspace:*"
   },
   "dependencies": {}
 }

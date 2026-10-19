@@ -74,16 +74,28 @@ function escapeShellArg(arg) {
 }
 
 // Run benchmark for all tools
-// Only the rows that have a `build:<tool>` script in the app.
+// Only the rows that have a `build:<tool>` script in the app. The preview B rows run only when
+// BENCH_PREVIEW_B=1 (the `rolldown_preview_b` input).
 const appScripts = JSON.parse(readFileSync(join(app, 'package.json'), 'utf-8')).scripts ?? {};
-const tools = ['rolldown', 'rolldown-preview', 'rolldown-preview-cache', 'rolldown-preview-cold', 'bun'].filter(
-  (tool) => `build:${tool}` in appScripts,
-);
+const previewB = process.env.BENCH_PREVIEW_B === '1';
+const tools = [
+  'rolldown',
+  'rolldown-preview',
+  'rolldown-preview-cache',
+  'rolldown-preview-cold',
+  'rolldown-preview-b',
+  'rolldown-preview-b-cache',
+  'rolldown-preview-b-cold',
+  'bun',
+].filter((tool) => `build:${tool}` in appScripts && (previewB || !tool.startsWith('rolldown-preview-b')));
 const toolDisplayNames = {
   'rolldown': 'rolldown',
   'rolldown-preview': 'rolldown preview',
   'rolldown-preview-cache': 'rolldown preview, warm cache',
   'rolldown-preview-cold': 'rolldown preview, cold cache',
+  'rolldown-preview-b': 'rolldown preview B',
+  'rolldown-preview-b-cache': 'rolldown preview B, warm cache',
+  'rolldown-preview-b-cold': 'rolldown preview B, cold cache',
   'bun': 'bun'
 };
 const tempJsonFile = '.bench-temp.json';
@@ -185,6 +197,9 @@ function getToolVersions() {
     'rolldown-preview': 'node tools/rolldown-preview/cli.mjs --version',
     'rolldown-preview-cache': 'node tools/rolldown-preview/cli.mjs --version',
     'rolldown-preview-cold': 'node tools/rolldown-preview/cli.mjs --version',
+    'rolldown-preview-b': 'node tools/rolldown-preview-b/cli.mjs --version',
+    'rolldown-preview-b-cache': 'node tools/rolldown-preview-b/cli.mjs --version',
+    'rolldown-preview-b-cold': 'node tools/rolldown-preview-b/cli.mjs --version',
     'bun': 'bun --version',
   };
 

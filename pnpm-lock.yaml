@@ -32,6 +32,9 @@ importers:
       rolldown-preview:
         specifier: workspace:*
         version: link:../../tools/rolldown-preview
+      rolldown-preview-b:
+        specifier: workspace:*
+        version: link:../../tools/rolldown-preview-b
 
   apps/3000: {}
 
@@ -48,6 +51,12 @@ importers:
         version: 6.6.5(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
 
   tools/rolldown-preview:
+    dependencies:
+      rolldown:
+        specifier: https://pkg.pr.new/rolldown/rolldown@5815f1e
+        version: https://pkg.pr.new/rolldown/rolldown@5815f1e
+
+  tools/rolldown-preview-b:
     dependencies:
       rolldown:
         specifier: https://pkg.pr.new/rolldown/rolldown@5815f1e
